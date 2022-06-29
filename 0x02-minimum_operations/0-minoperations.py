@@ -1,23 +1,19 @@
-#!/usr/bin/python3
-"""
-Minimum operations module
-"""
+#!/usr/bin/env python3
+"""Minimum Operations"""
 
 
 def minOperations(n):
-    """
-    execute the minimum posiible
-    """
-    if n <= 1:
+    """calculates the fewest number of operations needed
+    to result in exactly n H characters in the file."""
+    if (n < 2):
         return 0
 
-    variable1, variable2, variable3 = n, 2, 0
+    Ops, i = 0, 2
 
-    for i in range(2, variable1):
-        if variable1 % variable2 == 0:
-            variable1 = variable1 / variable2
-            variable3 = variable3 + variable2
-        else:
-            variable2 = variable2 + 1
-
-    return variable3
+    while i <= n:
+        if n % i == 0:
+            Ops += i
+            n = n / i
+            i -= 1
+        i += 1
+    return Ops
